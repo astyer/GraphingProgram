@@ -5,7 +5,6 @@ import java.awt.geom.Line2D;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 
-
 public class Drawing extends JFrame {
 
     public Drawing(ArrayList x, ArrayList y, double xmi, double xma, double ymi, double yma) {
