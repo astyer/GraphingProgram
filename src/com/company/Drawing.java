@@ -1,7 +1,6 @@
 package com.company;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.geom.Line2D;
 import java.util.ArrayList;
 import javax.swing.JFrame;
@@ -34,7 +33,6 @@ public class Drawing extends JFrame {
 
     public void drawAxis(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        //g2d.draw(new Line2D.Double(0, 40, 280, 28));
         double yaxmid = (xmax-xmin) - xmax;
         if(xmax >= 0 && xmin <=0)
         {
@@ -46,6 +44,7 @@ public class Drawing extends JFrame {
             g2d.draw(new Line2D.Double(0, xaxmid, xmax-xmin, xaxmid));
         }
 
+        g2d.setColor(Color.BLUE);
         for(int i = 0; i < xvals.size()-1; i++)
         {
             g2d.draw(new Line2D.Double(yaxmid+(double)xvals.get(i), xaxmid-(double)yvals.get(i), yaxmid+(double)xvals.get(i+1), xaxmid-(double)yvals.get(i+1)));
