@@ -10,12 +10,7 @@ public class Main {
 
         Scanner input = new Scanner(System.in);
         Scanner inputD = new Scanner(System.in);
-        System.out.println("What type of equation would you like to input? Enter \"linear\", or ...more to come");
-        String eqType = input.nextLine();
-        if(eqType.equalsIgnoreCase("linear"))
-        {
-            System.out.println("Enter your equation in the form y=mx+b");
-        }
+        System.out.println("Enter your equation in polynomial form (ex. y=3x^2+4x-2)");
         System.out.print("Input your equation: y=");
         String eq = input.nextLine();
         double xmin = -250;
@@ -46,10 +41,10 @@ public class Main {
         ArrayList yvals = new ArrayList();
         for(double i = xmin; i <= xmax; i+=xstep)
         {
-            yvals.add(EquationSolver.findYValue(i, eq, eqType));
+            yvals.add(EquationSolver.findYValue(i, eq));
         }
 
-        String [][] dataAr = new String[xvals.size()][yvals.size()];
+        String [][] dataAr = new String[xvals.size()][2];
         for(int i = 0; i < dataAr.length; i++)
         {
             dataAr[i][0] = Double.toString((double)xvals.get(i));
