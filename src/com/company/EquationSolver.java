@@ -9,7 +9,7 @@ public class EquationSolver {
         {
             if(eq.contains("x"))
             {
-                if(eq.contains("^"))
+                if(eq.contains("^")) //magic
                 {
                     int maxDegree = 1;
                     String[] parts = eq.split("\\+|\\-");
