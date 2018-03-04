@@ -13,7 +13,7 @@ public class Drawing extends JFrame {
         xmax = xma;
         ymin = ymi;
         ymax = yma;
-        setSize((int)(xmax-xmin), (int)(ymax-ymin) + 28);
+        setSize(500, 528);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         xvals = x;
         yvals = y;
@@ -32,21 +32,31 @@ public class Drawing extends JFrame {
 
     public void drawAxis(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        double yaxmid = (xmax-xmin) - xmax;
-        if(xmax >= 0 && xmin <=0)
+        double xscaleFactor = 500/(xmax-xmin);
+        double yscaleFactor = 500/(ymax-ymin);
+        double yaxmid = 250;
+        double xaxmid = 278;
+        if(xmax + xmin != 0)
         {
-            g2d.draw(new Line2D.Double(yaxmid, 0, yaxmid, (ymax-ymin)+28));
+            if(xmin <= 0)
+                yaxmid = Math.abs(xmin)*xscaleFactor;
+            else
+                yaxmid = -xmin*xscaleFactor;
         }
-        double xaxmid = ((ymax-ymin)+28) + ymin;
-        if(ymax >=0 && ymin <= 0)
+        if(ymax + ymin != 0)
         {
-            g2d.draw(new Line2D.Double(0, xaxmid, xmax-xmin, xaxmid));
+            if(ymin <= 0)
+                xaxmid = 528 - Math.abs(ymin)*yscaleFactor;
+            else
+                xaxmid = 528 + ymin*yscaleFactor;
         }
+        g2d.draw(new Line2D.Double(yaxmid, 0, yaxmid, 528));
+        g2d.draw(new Line2D.Double(0, xaxmid, 500, xaxmid));
 
         g2d.setColor(Color.BLUE);
         for(int i = 0; i < xvals.size()-1; i++)
         {
-            g2d.draw(new Line2D.Double(yaxmid+(double)xvals.get(i), xaxmid-(double)yvals.get(i), yaxmid+(double)xvals.get(i+1), xaxmid-(double)yvals.get(i+1)));
+            g2d.draw(new Line2D.Double(yaxmid+((double)xvals.get(i)*xscaleFactor), xaxmid-((double)yvals.get(i)*yscaleFactor), yaxmid+((double)xvals.get(i+1)*xscaleFactor), xaxmid-((double)yvals.get(i+1)*yscaleFactor)));
         }
 
     }

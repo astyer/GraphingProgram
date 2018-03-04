@@ -13,10 +13,10 @@ public class Main {
         System.out.println("Enter your equation in polynomial form (ex. y=3x^2+4x-2)");
         System.out.print("Input your equation: y=");
         String eq = input.nextLine();
-        double xmin = -250;
-        double xmax = 250;
-        double ymin = -250;
-        double ymax = 250;
+        double xmin = -10;
+        double xmax = 10;
+        double ymin = -10;
+        double ymax = 10;
         System.out.println("Edit window? (Enter yes or no)");
         String yorn = input.nextLine();
         if(yorn.equalsIgnoreCase("yes"))
